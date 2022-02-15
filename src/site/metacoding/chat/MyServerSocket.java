@@ -11,6 +11,8 @@ public class MyServerSocket {
     Socket socket; // 메시지 통신
     BufferedReader reader;
 
+    private boolean isConnected;
+
     public MyServerSocket() {
         try {
             // 1. 서버소켓 생성(리스너)
@@ -22,10 +24,18 @@ public class MyServerSocket {
                     new InputStreamReader(socket.getInputStream()) // socket.get~ : 선
             );
 
+            isConnected = true;
             // 얘를 while 돌리기
-            String inputData = reader.readLine();
-            System.out.println("받은 메시지:" + inputData);
-            System.out.println("클라이언트 연결됨");
+            while (isConnected) {
+
+                String inputData = reader.readLine();
+                System.out.println("받은 메시지:" + inputData);
+                // System.out.println("클라이언트 연결됨");
+
+                if (inputData.equals("접속종료")) {
+                    isConnected = false;
+                }
+            }
         } catch (Exception e) {
             System.out.println("통신 오류 발생:" + e.getMessage());
             // e.printStackTrace();
