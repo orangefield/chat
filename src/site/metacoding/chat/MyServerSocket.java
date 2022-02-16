@@ -8,7 +8,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class MyServerSocket {
+public class MyServerSocket { // 이 방식은 stateful 방식의 통신이다
 
     ServerSocket serverSocket; // 리스너(연결 = 세션 생성)
     Socket socket; // 메시지 통신
