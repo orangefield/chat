@@ -58,7 +58,7 @@ public class MyClientSocket {
             try {
                 while (true) {
                     String inputData = reader.readLine();
-                    System.out.println("받은 메시지:" + inputData);
+                    System.out.println(inputData);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
